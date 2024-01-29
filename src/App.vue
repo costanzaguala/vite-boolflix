@@ -31,11 +31,22 @@ export default {
                 })
 
                 .then((response) => {
-                    console.log(response.data.results)
+                    console.log('Movies',response.data.results)
                     this.store.movies=response.data.results; 
                 });
+            
+            axios 
+                .get('https://api.themoviedb.org/3/search/tv', {
+                    params: {
+                        api_key: 'c1fb2d9cb791b1a49d30ff785e40f309',
+                        query: this.store.searchInput
+                    }
+                })
+                .then((response) => {
+                    console.log('Series',response.data.results)
+                    this.store.series=response.data.results; 
+                });
         }
-
     }
 }
 </script>
